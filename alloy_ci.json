@@ -1,0 +1,19 @@
+{
+  "image": "ruby:2.3.4",
+  "services": [],
+  "cache": {
+    "paths": []
+  },
+  "variables": {},
+  "before_script": [
+    "gem install bundler",
+    "bundle install --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}"    
+  ],
+  "rspec": {
+    "stage": "test",
+    "tags": ["ruby", "rspec"],
+    "script": [
+      "bundle exec rspec"
+    ]
+  }
+}
